@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>WebRTC Video Demo</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<style>
+    body {
+        background: #eee;
+        padding: 5% 0;
+    }
+    
+    video {
+        background: black;
+        border: 1px solid gray;
+    }
+    
+    .call-page {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 500px;
+        height: 500px;
+    }
+    
+    #localVideo {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+    
+    #remoteVideo {
+        width: 500px;
+        height: 500px;
+    }
+</style>
+
+<body>
+
+    <div id="loginPage" class="container text-center">
+        <form action="/" method="POST">
+
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+
+                    <h2>WebRTC Video Demo. Please sign in</h2>
+                    <label for="username" class="sr-only">Login</label>
+                    <input type="text" id="username" name="username" class="form-control formgroup" placeholder="Login" required="" autofocus="">
+                    <button id="loginBtn" name="loginBtn" class="btn btn-lg btn-primary btnblock">
+               Sign in</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/client.js"></script>
+</body>
+
+</html>
