@@ -32,7 +32,7 @@ server = http.createServer(app);
 initializeSocketServer(server);
 
 
-let port = process.argv[2]
+let port = process.env.argv || 3000
 server.listen(port, function() {
     console.log("Server listening to the port ", port, new Date());
 });
