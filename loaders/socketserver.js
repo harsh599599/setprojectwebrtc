@@ -4,7 +4,7 @@ module.exports = {
 var WebSocketServer = require('ws').Server;
 
 //creating a websocket server at port 9090 
-var wss = new WebSocketServer({ port: 4040 });
+var wss = new WebSocketServer({ port: 4000 });
 
 const socketIO = require('socket.io');
 
