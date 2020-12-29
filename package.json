@@ -8,7 +8,8 @@
         "start": "node loaders/server.js"
     },
     "engines": {
-        "node": "12.11.1"
+        "node": "14.9.0",
+        "npm": "6.14.8"
     },
     "author": "",
     "license": "ISC",
