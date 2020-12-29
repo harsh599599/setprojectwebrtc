@@ -3,6 +3,7 @@
 // }
 
 const express = require('express');
+const cors = require('cors');
 
 const path = require('path');
 const http = require('http');
@@ -23,19 +24,11 @@ app
     .use(express.static(path.join(__dirname, '../public'))) // all assets will be provided from 'public' folder
     .set('views', path.join(__dirname, '../views')) // views will be provided from 'views' folder
     .set('view engine', 'ejs') // selecting view engine as html
+    .use(cors())
     //.engine('html', ejs.renderFile) // view will be rendered using ejs
     //.use('/', require('../routes/index')) // index routes
     .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())
-    .use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*"); //access to which api
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,Accept,Authorization");
-        next();
-        if (req.method === 'OPTIONS') {
-            res.header('Access-Control-Allow-Headers', 'PUT,POST,DELETE,GET'); // options
-            return res.status(200);
-        }
-    });
 
 server = http.createServer(app);
 //  console.log("gt", __dirname);
