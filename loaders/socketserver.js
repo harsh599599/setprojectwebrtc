@@ -19,7 +19,7 @@ function initializeSocketServer(server) {
     });
 
     wss.on("connection", (connection) => {
-        console.log("client Connected : ", connection.id, new Date());
+        console.log("client Connected : ", new Date());
 
         connection.on('message', (message) => {
             console.log("messag", message);

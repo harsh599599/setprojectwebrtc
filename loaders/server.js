@@ -8,6 +8,7 @@ const path = require('path');
 const http = require('http');
 const ejs = require('ejs');
 console.log("asas");
+var bodyParser = require('body-parser');
 const { initializeSocketServer } = require('./socketserver');
 
 var server;
@@ -24,6 +25,17 @@ app
     .set('view engine', 'ejs') // selecting view engine as html
     //.engine('html', ejs.renderFile) // view will be rendered using ejs
     //.use('/', require('../routes/index')) // index routes
+    .use(bodyParser.urlencoded({ extended: false }))
+    .use(bodyParser.json())
+    .use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*"); //access to which api
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,Accept,Authorization");
+        next();
+        if (req.method === 'OPTIONS') {
+            res.header('Access-Control-Allow-Headers', 'PUT,POST,DELETE,GET'); // options
+            return res.status(200);
+        }
+    });
 
 server = http.createServer(app);
 //  console.log("gt", __dirname);
